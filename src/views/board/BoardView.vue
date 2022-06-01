@@ -1,5 +1,5 @@
 <template>
-  <v-table theme="dark" density="compact">
+  <v-table density="compact">
     <colgroup>
       <col style="width: 10%">
       <col style="width: 50%">
@@ -23,6 +23,14 @@
     </tr>
     </tbody>
   </v-table>
+  <div class="d-flex justify-space-between">
+    <v-text-field
+        label="SEARCH"
+        variant="plain"
+    ></v-text-field>
+    <v-btn variant="outlined" size="small">SEARCH</v-btn>
+  </div>
+
   <div class="text-center">
     <v-pagination
         v-model="currentPage"
@@ -67,18 +75,13 @@ export default {
     search() {
 
       bbsList(this.currentPage, this.pageSize, this.keyword).then(response => {
-        if (this.pageSize > response.data.totalElements) {
-          this.pageSize = response.data.totalElements;
-        }
-
         this.length = response.data.totalPages;
         this.items = response.data.content;
         this.pageSize = response.data.size;
-
         this.totalElements = response.data.totalElements;
-        console.log("R data: ", response.data)
-        console.log(this.currentPage)
 
+        console.log("board-list-data: ", response.data)
+        console.log(`current-page: ${this.currentPage}`)
       }).catch(error => {
         alert(error)
       })
