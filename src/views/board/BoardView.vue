@@ -1,19 +1,25 @@
 <template>
-  <v-table theme="dark">
+  <v-table theme="dark" density="compact">
+    <colgroup>
+      <col style="width: 10%">
+      <col style="width: 50%">
+      <col style="width: 20%">
+      <col style="width: 20%">
+    </colgroup>
     <thead>
     <tr>
-      <th class="text-left">
-        ID
-      </th>
-      <th class="text-left">
-        TITLE
-      </th>
+      <th class="text-left">ID</th>
+      <th class="text-left">TITLE</th>
+      <th class="text-left">WRITER</th>
+      <th class="text-left">DATE</th>
     </tr>
     </thead>
     <tbody>
     <tr v-for="item in items" :key="item.name">
       <td>{{ item.id }}</td>
       <td>{{ item.title }}</td>
+      <td>{{ item.writer }}</td>
+      <td>{{ item.createdDate.replace('T', ' ') }}</td>
     </tr>
     </tbody>
   </v-table>
@@ -21,6 +27,9 @@
     <v-pagination
         v-model="currentPage"
         :length="length"
+        :total-visible="5"
+        prev-icon="mdi-menu-left"
+        next-icon="mdi-menu-right"
     ></v-pagination>
   </div>
 </template>
@@ -42,12 +51,6 @@ export default {
       keyword: '',
       items1: [],
       length: 0,
-      // headers: [
-      //       {id:1, text:'ID'}
-      //     , {id:2, text:'TITLE'}
-      //     , {id:3, text:'WRITER'}
-      //     , {id:4, text:'DATE'}
-      // ]
     }
   },
   computed: {},
@@ -69,7 +72,6 @@ export default {
         }
 
         this.length = response.data.totalPages;
-
         this.items = response.data.content;
         this.pageSize = response.data.size;
 
