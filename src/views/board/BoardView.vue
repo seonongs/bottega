@@ -1,5 +1,5 @@
 <template>
-  <v-table density="compact">
+  <v-table density="compact" style="margin-top: 10px;">
     <colgroup>
       <col style="width: 10%">
       <col style="width: 50%">
@@ -17,18 +17,22 @@
     <tbody>
     <tr v-for="item in items" :key="item.name">
       <td>{{ item.id }}</td>
-      <td>{{ item.title }}</td>
+      <td><router-link :to="`/board-detail/${item.id}`">{{ item.title }}</router-link></td>
       <td>{{ item.writer }}</td>
       <td>{{ item.createdDate.replace('T', ' ') }}</td>
     </tr>
     </tbody>
   </v-table>
-  <div class="d-flex justify-space-between">
+  <div class="d-flex justify-start" style="vertical-align: middle">
+    <v-btn variant="outlined" size="large" @click="write" style="height: 40px;">WRITE</v-btn>
     <v-text-field
         label="SEARCH"
-        variant="plain"
+        variant="outlined"
+        density="compact"
+        v-model="keyword"
     ></v-text-field>
-    <v-btn variant="outlined" size="small">SEARCH</v-btn>
+    <v-btn variant="outlined" size="large" @click="search" style="height: 40px;">SEARCH</v-btn>
+    <v-btn variant="outlined" size="large" @click="list"  style="height: 40px;">LIST</v-btn>
   </div>
 
   <div class="text-center">
@@ -51,13 +55,11 @@ export default {
   name: "BbsListView",
   data() {
     return {
-
       items: [],
       pageSize: 5,
       currentPage: 1,
       totalElements: 0,
       keyword: '',
-      items1: [],
       length: 0,
     }
   },
@@ -89,6 +91,9 @@ export default {
     list() {
       this.keyword = '';
       this.search();
+    },
+    write() {
+      this.$router.push('/board-write')
     }
   },
 
@@ -96,6 +101,23 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
+a {
+  text-decoration-line: none;
+}
+a:link { /*링크 방문 전*/
+  color: #244781;
+}
 
+a:visited { /*링크를 방문한 이후*/
+  color: #244781;
+}
+
+a:hover { /*마우스를 올려놓을 때*/
+  color: #c610cc;
+}
+
+a:active { /*클릭하는 순간*/
+  color: #c90a27;
+}
 </style>
