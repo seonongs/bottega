@@ -24,15 +24,15 @@
     </tbody>
   </v-table>
   <div class="d-flex justify-start" style="vertical-align: middle">
-    <v-btn variant="outlined" size="large" @click="write" style="height: 40px;">WRITE</v-btn>
+    <v-btn variant="outlined" size="large" @click="list"  style="height: 40px;">LIST</v-btn>&nbsp;
     <v-text-field
         label="SEARCH"
         variant="outlined"
         density="compact"
         v-model="keyword"
-    ></v-text-field>
-    <v-btn variant="outlined" size="large" @click="search" style="height: 40px;">SEARCH</v-btn>
-    <v-btn variant="outlined" size="large" @click="list"  style="height: 40px;">LIST</v-btn>
+    ></v-text-field>&nbsp;
+    <v-btn variant="outlined" size="large" @click="search" style="height: 40px;">SEARCH</v-btn>&nbsp;
+    <v-btn variant="outlined" size="large" @click="write" style="height: 40px;">WRITE</v-btn>&nbsp;
   </div>
 
   <div class="text-center">
@@ -63,15 +63,11 @@ export default {
       length: 0,
     }
   },
-  computed: {},
   watch: {
     currentPage(newValue) {
       this.currentPage = newValue;
       this.search();
     }
-  },
-  created() {
-    this.search();
   },
   methods: {
     search() {
@@ -96,28 +92,31 @@ export default {
       this.$router.push('/board-write')
     }
   },
-
+  created() {
+    this.search();
+  },
 }
 
 </script>
 
 <style scoped>
-a {
-  text-decoration-line: none;
-}
 a:link { /*링크 방문 전*/
-  color: #244781;
+  color: #000000;
 }
 
 a:visited { /*링크를 방문한 이후*/
-  color: #244781;
+  color: #000000;
 }
 
 a:hover { /*마우스를 올려놓을 때*/
-  color: #c610cc;
+  color: #ff0000;
 }
 
 a:active { /*클릭하는 순간*/
-  color: #c90a27;
+  color: #000000;
+}
+
+a {
+  text-decoration: none;
 }
 </style>

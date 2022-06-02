@@ -30,14 +30,14 @@
     </tbody>
   </v-table>
   <div class="d-flex justify-start" style="vertical-align: middle">
-    <v-btn variant="outlined" size="large" @click="modify(item.id)"  style="height: 40px;">MODIFY</v-btn>
-    <v-btn variant="outlined" size="large" @click="hide(item.id)" color="error" style="height: 40px;">DELETE</v-btn>
+    <v-btn variant="outlined" size="large" @click="list"  style="height: 40px;">LIST</v-btn>&nbsp;
     <v-text-field
         variant="outlined"
         density="compact"
         disabled
-    ></v-text-field>
-    <v-btn variant="outlined" size="large" @click="list"  style="height: 40px;">LIST</v-btn>
+    ></v-text-field>&nbsp;
+    <v-btn variant="outlined" size="large" @click="hide(item.id)" color="error" style="height: 40px;">DELETE</v-btn>&nbsp;
+    <v-btn variant="outlined" size="large" @click="modify(item.id)"  style="height: 40px;">MODIFY</v-btn>
   </div>
 </template>
 
@@ -62,7 +62,7 @@ export default {
     },
     hide(id) {
       bbsDelete(id).then(response => {
-        console.log("D data:", response);
+        console.log("board-delete-data:", response);
         this.$router.push(`/board`)
       }).catch(error => {
         console.log(error)
@@ -76,7 +76,7 @@ export default {
       this.createdDate = response.data.createdDate.replace('T',' ');
       this.modifiedDate = response.data.modifiedDate.replace('T',' ');
 
-      console.log("R data: ", response.data)
+      console.log("board-detail-data: ", response.data)
     }).catch(error => {
       alert(error);
     })

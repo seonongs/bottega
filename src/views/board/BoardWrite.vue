@@ -34,14 +34,14 @@
     </tr>
     </tbody>
   </v-table>
-  <div class="d-flex justify-start" style="vertical-align: middle">
-    <v-btn variant="outlined" size="large" @click="list"  style="height: 40px;">LIST</v-btn>
+  <div class="d-flex justify-start">
+    <v-btn variant="outlined" size="large" @click="list"  style="height: 40px;">LIST</v-btn>&nbsp;
     <v-text-field
         variant="outlined"
         density="compact"
         disabled
-    ></v-text-field>
-    <v-btn variant="outlined" size="large" @click="submit"  style="height: 40px;">SUBMIT</v-btn>
+    ></v-text-field>&nbsp;
+    <v-btn variant="outlined" size="large" @click="submit"  style="height: 40px;">CONFIRM</v-btn>&nbsp;
   </div>
 </template>
 
@@ -65,7 +65,7 @@ export default {
         'writer': this.writer
       }
       bbsCreate(param).then(response => {
-        console.log("C data: ", response);
+        console.log("board-writer-data: ", response);
         this.$router.push(`/board-detail/${response.data.id}`);
       }).catch(error => {
         console.log(error);
@@ -77,7 +77,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-
-</style>

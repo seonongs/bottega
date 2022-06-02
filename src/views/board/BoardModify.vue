@@ -35,13 +35,13 @@
     </tbody>
   </v-table>
   <div class="d-flex justify-start" style="vertical-align: middle">
-    <v-btn variant="outlined" size="large" @click="submit"  style="height: 40px;">COMFIRM</v-btn>
+    <v-btn variant="outlined" size="large" @click="list"  style="height: 40px;">LIST</v-btn>&nbsp;
     <v-text-field
         variant="outlined"
         density="compact"
         disabled
-    ></v-text-field>
-    <v-btn variant="outlined" size="large" @click="list"  style="height: 40px;">LIST</v-btn>
+    ></v-text-field>&nbsp;
+    <v-btn variant="outlined" size="large" @click="submit"  style="height: 40px;">CONFIRM</v-btn>&nbsp;
   </div>
 </template>
 
@@ -58,7 +58,6 @@ export default {
         {writer: ''},
         {content: ''},
       ],
-
     }
   },
   methods: {
@@ -69,7 +68,7 @@ export default {
         'writer': this.item.writer
       }
       bbsUpdate(this.item.id, param).then(response => {
-        console.log("C data: ", response);
+        console.log("board-modify-data: ", response);
         this.$router.push(`/board-detail/${response.data.id}`);
       }).catch(error => {
         console.log(error);
@@ -86,14 +85,10 @@ export default {
       this.createdDate = response.data.createdDate.replace('T',' ');
       this.modifiedDate = response.data.modifiedDate.replace('T',' ');
 
-      console.log("R data: ", response.data)
+      console.log("board-detail-data: ", response.data)
     }).catch(error => {
       alert(error);
     })
   },
 }
 </script>
-
-<style scoped>
-
-</style>
