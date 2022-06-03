@@ -5,6 +5,8 @@ import BoardWrite from "@/views/board/BoardWrite";
 import BoardDetail from "@/views/board/BoardDetail";
 import BoardModify from "@/views/board/BoardModify";
 
+import LoginView from "@/views/login/LoginView";
+
 const routes = [
     {
         path: "/",
@@ -30,6 +32,12 @@ const routes = [
         path: "/board-modify/:id",
         name: "BoardModify",
         component: BoardModify,
+    },
+
+    {
+        path: "/login",
+        name: "LoginView",
+        component: LoginView,
     },
 ];
 

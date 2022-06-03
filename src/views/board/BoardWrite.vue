@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import {bbsCreate} from "@/api";
+import {boardWrite} from "@/api";
 
 export default {
   name: "BoardWrite",
@@ -64,7 +64,7 @@ export default {
         'content': this.content,
         'writer': this.writer
       }
-      bbsCreate(param).then(response => {
+      boardWrite(param).then(response => {
         console.log("board-writer-data: ", response);
         this.$router.push(`/board-detail/${response.data.id}`);
       }).catch(error => {

@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import {bbsDelete, bbsDetail} from "@/api";
+import {boardDelete, boardDetail} from "@/api";
 
 export default {
   name: "BoardWrite",
@@ -61,7 +61,7 @@ export default {
       this.$router.push(`/board-modify/${id}`);
     },
     hide(id) {
-      bbsDelete(id).then(response => {
+      boardDelete(id).then(response => {
         console.log("board-delete-data:", response);
         this.$router.push(`/board`)
       }).catch(error => {
@@ -70,7 +70,7 @@ export default {
     },
   },
   created() {
-    bbsDetail(this.$route.params.id).then(response => {
+    boardDetail(this.$route.params.id).then(response => {
       this.item = response.data;
 
       this.createdDate = response.data.createdDate.replace('T',' ');

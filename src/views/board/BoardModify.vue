@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import {bbsDetail, bbsUpdate} from "@/api";
+import {boardDetail, boardModify} from "@/api";
 
 export default {
   name: "BoardWrite",
@@ -67,7 +67,7 @@ export default {
         'content': this.item.content,
         'writer': this.item.writer
       }
-      bbsUpdate(this.item.id, param).then(response => {
+      boardModify(this.item.id, param).then(response => {
         console.log("board-modify-data: ", response);
         this.$router.push(`/board-detail/${response.data.id}`);
       }).catch(error => {
@@ -79,7 +79,7 @@ export default {
     }
   },
   created() {
-    bbsDetail(this.$route.params.id).then(response => {
+    boardDetail(this.$route.params.id).then(response => {
       this.item = response.data;
 
       this.createdDate = response.data.createdDate.replace('T',' ');

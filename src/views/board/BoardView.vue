@@ -48,7 +48,7 @@
 
 <script>
 
-import {bbsList} from "@/api";
+import {boardList} from "@/api";
 
 export default {
 
@@ -72,7 +72,7 @@ export default {
   methods: {
     search() {
 
-      bbsList(this.currentPage, this.pageSize, this.keyword).then(response => {
+      boardList(this.currentPage, this.pageSize, this.keyword).then(response => {
         this.length = response.data.totalPages;
         this.items = response.data.content;
         this.pageSize = response.data.size;

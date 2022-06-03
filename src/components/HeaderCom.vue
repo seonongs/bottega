@@ -6,7 +6,7 @@
     <router-link to="/board">
       <v-btn>Board</v-btn>
     </router-link>
-    <router-link to="/">
+    <router-link to="/login">
       <v-btn>Login</v-btn>
     </router-link>
   </div>
