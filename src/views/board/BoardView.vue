@@ -15,11 +15,11 @@
     </tr>
     </thead>
     <tbody>
-    <tr v-for="item in items" :key="item.id">
+    <tr v-for="item in items" :key="item.name">
       <td>{{ item.id }}</td>
       <td><router-link :to="`/board-detail/${item.id}`">{{ item.title }}</router-link></td>
       <td>{{ item.writer }}</td>
-      <td>{{ item.createdDate }}</td>
+      <td>{{ item.createdDate.replace('T', ' ') }}</td>
     </tr>
     </tbody>
   </v-table>
@@ -48,7 +48,7 @@
 
 <script>
 
-import {boardList} from "@/api";
+import {bbsList} from "@/api";
 
 export default {
 
@@ -72,9 +72,9 @@ export default {
   methods: {
     search() {
 
-      boardList(this.currentPage, this.pageSize, this.keyword).then(response => {
-        this.items = response.data.content;
+      bbsList(this.currentPage, this.pageSize, this.keyword).then(response => {
         this.length = response.data.totalPages;
+        this.items = response.data.content;
         this.pageSize = response.data.size;
         this.totalElements = response.data.totalElements;
 

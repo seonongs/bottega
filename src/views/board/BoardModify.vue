@@ -67,7 +67,7 @@ export default {
         'content': this.item.content,
         'writer': this.item.writer
       }
-      boardUpdate(this.item.id, param).then(response => {
+      bbsUpdate(this.item.id, param).then(response => {
         console.log("board-modify-data: ", response);
         this.$router.push(`/board-detail/${response.data.id}`);
       }).catch(error => {
@@ -79,7 +79,7 @@ export default {
     }
   },
   created() {
-    boardDetail(this.$route.params.id).then(response => {
+    bbsDetail(this.$route.params.id).then(response => {
       this.item = response.data;
 
       this.createdDate = response.data.createdDate.replace('T',' ');
