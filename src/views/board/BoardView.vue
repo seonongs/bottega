@@ -19,7 +19,7 @@
       <td>{{ item.id }}</td>
       <td><router-link :to="`/board-detail/${item.id}`">{{ item.title }}</router-link></td>
       <td>{{ item.writer }}</td>
-      <td>{{ item.createdDate.replace('T', ' ') }}</td>
+      <td>{{ item.created_date}}</td>
     </tr>
     </tbody>
   </v-table>

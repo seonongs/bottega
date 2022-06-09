@@ -10,13 +10,13 @@
         <v-card-text>
           <v-text-field
               ref="name"
-              v-model="id"
-              label="ID"
+              v-model="email"
+              label="email"
               placeholder="ID"
               required
           ></v-text-field>
           <v-text-field
-              v-model="pw"
+              v-model="password"
               :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
               :type="show ? 'text' : 'password'"
               label="PassWord"
@@ -53,30 +53,29 @@ export default {
   data() {
     return {
       valid: true,
-      id: '',
-      pw: '',
+      email: '',
+      password: '',
       show: '',
     }
   },
   methods: {
     cancel() {
-      this.id = '';
-      this.pw = '';
+      this.email = '';
+      this.password = '';
     },
     submit() {
       let param = {
-        'id': this.id,
-        'pw': this.pw,
+        'email': this.email,
+        'password': this.password,
       }
 
       login(param).then(response => {
         console.log("login: ", response);
-        this.$router.push(`/home`);
+        this.$router.push(`/board`);
       }).catch(error => {
         console.log(error);
       })
 
-      alert('submit')
     },
   },
 }

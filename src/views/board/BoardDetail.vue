@@ -19,9 +19,9 @@
       <th class="text-left">WRITER</th>
       <td>{{ item.writer }}</td>
       <th class="text-left">DATE</th>
-      <td>{{ createdDate }}</td>
+      <td>{{ created_date }}</td>
       <th class="text-left">UPDATE</th>
-      <td>{{ modifiedDate }}</td>
+      <td>{{ modified_date }}</td>
     </tr>
     <tr>
       <th class="text-left">CONTENT</th>
@@ -49,8 +49,8 @@ export default {
   data() {
     return {
       item: [],
-      createdDate: '',
-      modifiedDate: '',
+      created_date: '',
+      modified_date: '',
     }
   },
   methods: {
@@ -73,8 +73,8 @@ export default {
     boardDetail(this.$route.params.id).then(response => {
       this.item = response.data;
 
-      this.createdDate = response.data.createdDate.replace('T',' ');
-      this.modifiedDate = response.data.modifiedDate.replace('T',' ');
+      this.created_date = response.data.created_date.replace('T',' ');
+      this.modified_date = response.data.modified_date.replace('T',' ');
 
       console.log("board-detail-data: ", response.data)
     }).catch(error => {

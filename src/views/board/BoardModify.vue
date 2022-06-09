@@ -82,8 +82,8 @@ export default {
     boardDetail(this.$route.params.id).then(response => {
       this.item = response.data;
 
-      this.createdDate = response.data.createdDate.replace('T',' ');
-      this.modifiedDate = response.data.modifiedDate.replace('T',' ');
+      this.created_date = response.data.createdDate;
+      this.modified_date = response.data.modifiedDate;
 
       console.log("board-detail-data: ", response.data)
     }).catch(error => {

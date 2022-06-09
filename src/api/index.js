@@ -22,7 +22,7 @@ const boardDelete = async(id) => {
 }
 
 const login = async(param) => {
-    return await axios.get(`/login`, param)
+    return await axios.post(`/login`, param)
 }
 
 export {
