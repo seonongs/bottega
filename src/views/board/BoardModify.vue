@@ -8,18 +8,18 @@
     <tr>
       <td>
         <v-text-field style="margin-top: 15px;"
-            label="TITLE"
-            variant="outlined"
-            density="compact"
-            v-model="item.title"
+                      label="TITLE"
+                      variant="outlined"
+                      density="compact"
+                      v-model="item.title"
         ></v-text-field>
       </td>
       <td>
         <v-text-field style="margin-top: 15px;"
-            label="WRITER"
-            variant="outlined"
-            density="compact"
-            v-model="item.writer"
+                      label="WRITER"
+                      variant="outlined"
+                      density="compact"
+                      v-model="item.writer"
         ></v-text-field>
       </td>
     </tr>
@@ -35,13 +35,13 @@
     </tbody>
   </v-table>
   <div class="d-flex justify-start" style="vertical-align: middle">
-    <v-btn variant="outlined" size="large" @click="list"  style="height: 40px;">LIST</v-btn>&nbsp;
+    <v-btn variant="outlined" size="large" @click="list" style="height: 40px;">LIST</v-btn>&nbsp;
     <v-text-field
         variant="outlined"
         density="compact"
         disabled
     ></v-text-field>&nbsp;
-    <v-btn variant="outlined" size="large" @click="submit"  style="height: 40px;">CONFIRM</v-btn>&nbsp;
+    <v-btn variant="outlined" size="large" @click="submit" style="height: 40px;">CONFIRM</v-btn>&nbsp;
   </div>
 </template>
 
@@ -55,8 +55,8 @@ export default {
       item: [
         {id: ''},
         {title: ''},
-        {writer: ''},
         {content: ''},
+        {writer: ''},
       ],
     }
   },
@@ -81,9 +81,6 @@ export default {
   created() {
     boardDetail(this.$route.params.id).then(response => {
       this.item = response.data;
-
-      this.created_date = response.data.createdDate;
-      this.modified_date = response.data.modifiedDate;
 
       console.log("board-detail-data: ", response.data)
     }).catch(error => {
